@@ -9,6 +9,12 @@ module DialogGlobalBug
         puts 'my custom callback called'
       end
 
+      dialog.add_action_callback('requestLocalFilePath') do |_|
+        path = File.join(__dir__, 'html', 'local_data.json')
+        puts "Path: #{path}"
+        dialog.execute_script("getFileWithPath('#{path}')")
+      end
+
       dialog.add_action_callback('close') do |_|
         dialog.close
       end
