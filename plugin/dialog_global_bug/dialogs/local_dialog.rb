@@ -15,6 +15,11 @@ module DialogGlobalBug
         dialog.execute_script("getFileWithPath('#{path}')")
       end
 
+      dialog.add_action_callback('load_link') do |_, url|
+        puts "HtmlDialog#set_url('#{url}')"
+        dialog.set_url(url)
+      end
+
       dialog.add_action_callback('close') do |_|
         dialog.close
       end
